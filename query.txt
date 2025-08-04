@@ -1,0 +1,15 @@
+SELECT 
+  g.*,
+  ap.mass_flame
+FROM
+  gaiadr3.gaia_source AS g
+JOIN 
+  gaiadr3.astrophysical_parameters AS ap 
+  ON g.source_id = ap.source_id
+WHERE
+  g.parallax > 10                            
+  AND g.parallax_over_error > 10             
+  AND g.ruwe < 1.4                           
+  AND g.phot_g_mean_mag < 15                 
+  AND g.phot_bp_mean_mag IS NOT NULL      
+  AND g.logg_gspphot > 4.0  
